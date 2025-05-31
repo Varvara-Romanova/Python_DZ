@@ -2,6 +2,7 @@
 def print_digit(num):
     print(num)
 
+
 # Вызываем функцию 11 раз
 print_digit(8)
 print_digit(8)
