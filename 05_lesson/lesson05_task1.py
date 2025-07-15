@@ -1,8 +1,11 @@
 from selenium import webdriver
-import time
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time  # Используется для time.sleep()
 
-# Инициализация браузера Google Chrome
-driver = webdriver.Chrome()
+# Инициализация браузера
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service)
 
 try:
     # Открытие страницы
@@ -11,16 +14,13 @@ try:
     # Небольшая пауза для загрузки страницы
     time.sleep(2)
 
-    # Поиск и клик по синей кнопке
-    blue_button = driver.find_element(
-        "css selector",
-        ".btn-primary"
-    )
+    # Найти и кликнуть на синюю кнопку
+    blue_button = driver.find_element("css selector", ".btn-primary")
     blue_button.click()
 
     # Пауза для визуального подтверждения результата
     time.sleep(2)
 
 finally:
-    # Закрытие браузера
+    # Закрыть браузер
     driver.quit()
