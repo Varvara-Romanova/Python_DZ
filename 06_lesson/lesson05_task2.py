@@ -11,26 +11,27 @@ driver = webdriver.Chrome(service=service)
 
 try:
     # Открытие страницы
-    driver.get("http://uitestingplayground.com/textinput")
+    url = "http://uitestingplayground.com/textinput"
+    driver.get(url)
 
     # Ввод текста в поле
     input_field = driver.find_element(By.CSS_SELECTOR, "#newButtonName")
     input_field.send_keys("SkyPro")
 
     # Нажатие на синюю кнопку
-    blue_button = driver.find_element(By.CSS_SELECTOR, "#updatingButton")
+    button_locator = (By.CSS_SELECTOR, "#updatingButton")
+    blue_button = driver.find_element(*button_locator)
     blue_button.click()
 
     # Явное ожидание обновления текста на кнопке
-    locator = (By.CSS_SELECTOR, "#updatingButton")
     expected_text = "SkyPro"
 
-    updated_text = WebDriverWait(driver, 10).until(
-        EC.text_to_be_present_in_element(locator, expected_text)
+    WebDriverWait(driver, 20).until(
+        EC.text_to_be_present_in_element(button_locator, expected_text)
     )
 
     # Получение и вывод текста кнопки
-    button_text = driver.find_element(By.CSS_SELECTOR, "#updatingButton").text
+    button_text = driver.find_element(*button_locator).text
     print(button_text)
 
 finally:
