@@ -28,17 +28,15 @@ def test_shop_checkout_with_page_object(driver):
     inventory_page.add_products()
     inventory_page.go_to_cart()
 
-    # Переходим к оформлению заказа
+    # Переходим к оформлению
     cart_page.click_checkout()
 
     # Заполняем форму
     checkout_page.fill_form("Иван", "Петров", "12345")
-
-    # Получаем итоговую сумму
     total_text = checkout_page.get_total()
 
-    # Проверка результата
-    expected = "Total: $58.29"
-    assert total_text == expected, (
-        f"Ожидалось '{expected}', но получено: '{total_text}'"
+    # Проверка итоговой суммы
+    expected_total = "Total: $58.29"
+    assert total_text == expected_total, (
+        f"Ожидалось '{expected_total}', но получено: '{total_text}'"
     )
