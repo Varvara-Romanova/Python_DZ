@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from page_objects import LoginPage, InventoryPage, CartPage, CheckoutPage
+from calculator_page import CalculatorPage
 
 
 @pytest.fixture
@@ -13,32 +13,24 @@ def driver():
     driver.quit()
 
 
-def test_shop_checkout_with_page_object(driver):
-    # Создаём объекты страниц
-    login_page = LoginPage(driver)
-    inventory_page = InventoryPage(driver)
-    cart_page = CartPage(driver)
-    checkout_page = CheckoutPage(driver)
+def test_slow_calculator_with_page_object(driver):
+    # Создаём объект страницы
+    calc_page = CalculatorPage(driver)
 
-    # Открываем сайт и авторизуемся
-    login_page.open()
-    login_page.login("standard_user", "secret_sauce")
+    # Открываем страницу
+    calc_page.open()
 
-    # Добавляем товары в корзину
-    inventory_page.add_products()
-    inventory_page.go_to_cart()
+    # Устанавливаем задержку
+    calc_page.set_delay("45")
 
-    # Переходим к оформлению заказа
-    cart_page.click_checkout()
+    # Нажимаем кнопки
+    calc_page.click_button_7()
+    calc_page.click_button_plus()
+    calc_page.click_button_8()
+    calc_page.click_equals()
 
-    # Заполняем форму
-    checkout_page.fill_form("Иван", "Петров", "12345")
-
-    # Получаем итоговую сумму
-    total_text = checkout_page.get_total()
+    # Получаем результат
+    result = calc_page.get_result()
 
     # Проверка результата
-    expected = "Total: $58.29"
-    assert total_text == expected, (
-        f"Ожидалось '{expected}', но получено: '{total_text}'"
-    )
+    assert result == "15", f"Ожидалось '15', но получено: '{result}'"

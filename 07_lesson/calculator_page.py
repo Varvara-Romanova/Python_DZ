@@ -18,9 +18,9 @@ class CalculatorPage:
         self.driver.get(url)
 
     def set_delay(self, value):
-        delay_field = self.driver.find_element(*self.delay_input)
-        delay_field.clear()
-        delay_field.send_keys(value)
+        field = self.driver.find_element(*self.delay_input)
+        field.clear()
+        field.send_keys(value)
 
     def click_button_7(self):
         self.driver.find_element(*self.button_7).click()
