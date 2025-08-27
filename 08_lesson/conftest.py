@@ -5,7 +5,6 @@ import requests
 
 @pytest.fixture
 def api_client():
-    # Ваши данные (наставнику нужно будет вставить свои)
     LOGIN = "super.operetta2013@mail.ru"
     PASSWORD = "29012002"
     COMPANY_NAME = "SkyPro"
