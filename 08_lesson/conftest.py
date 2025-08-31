@@ -6,7 +6,7 @@ import requests
 @pytest.fixture
 def api_client():
     LOGIN = "super.operetta2013@mail.ru"
-    PASSWORD = "29012002"
+    PASSWORD = "29012002Vv."
     COMPANY_NAME = "SkyPro"
     BASE_URL = "https://ru.yougile.com"
 
