@@ -15,7 +15,7 @@ def test_create_project_negative_missing_title():
         "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json"
     }
-    data = {"color": "#FF5733"}  # нет title
+    data = {"color": "#FF5733"}
     response = requests.post(url, json=data, headers=headers)
 
     print(f"Status: {response.status_code}")
