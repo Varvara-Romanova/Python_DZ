@@ -1,0 +1,1 @@
+{"statusCode":404,"message":"Cannot POST /api-shortcuts/projects?organizationId=c5301aa0-4f14-44cb-9ec9-afd4b444104e","error":"Not Found"}
