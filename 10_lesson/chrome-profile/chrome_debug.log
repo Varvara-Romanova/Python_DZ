@@ -1,0 +1,6 @@
+[9556:14840:0905/213946.073:INFO:components\enterprise\browser\controller\chrome_browser_cloud_management_controller.cc:202] No machine level policy manager exists.
+[9556:14840:0905/213949.317:INFO:CONSOLE:0] "[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o", source: https://www.saucedemo.com/ (0)
+[9556:14840:0905/213950.020:INFO:CONSOLE:2] "Content is cached for offline use.", source: https://www.saucedemo.com/static/js/2.84a5cbf3.chunk.js (2)
+[9556:11472:0905/213952.961:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[16552:6436:0905/213953.494:WARNING:net\extras\sqlite\sqlite_persistent_store_backend_base.cc:176] Failed to post task from FlushAndNotifyInBackground@net\extras\sqlite\sqlite_persistent_store_backend_base.cc:226 to client_task_runner_.
+[16552:6436:0905/213953.494:WARNING:net\extras\sqlite\sqlite_persistent_store_backend_base.cc:176] Failed to post task from FlushAndNotifyInBackground@net\extras\sqlite\sqlite_persistent_store_backend_base.cc:226 to client_task_runner_.

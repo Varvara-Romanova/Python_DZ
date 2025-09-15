@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyi
+*.so
+*.dll
+*.exe
+*.pyd
+
+# Pytest
+.pytest_cache/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Chrome Driver
+chromedriver*
+geckodriver*
+msedgedriver*
+
+# Allure
+allure-results/
+allure-report/
+
+# Конфиги
+config/test_data.py  # ← ваш файл с логином и паролем
