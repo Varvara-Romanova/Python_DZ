@@ -18,9 +18,9 @@ class TestAPIProjects:
             response = api_client.get_projects()
 
         with allure.step("Проверка успешного ответа (200 OK)"):
-            assert response.status_code == 200, (
-                f"Ожидался 200, получен {response.status_code}"
-            )
+            assert response.status_code == 200, \
+                f"Ожидался 200, получен {response.status_code}. " \
+                f"Ответ: {response.text}"
 
     @allure.story("Создание проекта")
     @pytest.mark.api
@@ -31,16 +31,17 @@ class TestAPIProjects:
             response = api_client.create_project(project_name)
 
         with allure.step("Проверка успешного создания (201 Created)"):
-            assert response.status_code == 201, (
-                f"Ожидался 201, получен {response.status_code}"
-            )
+            assert response.status_code == 201, \
+                f"Ожидался 201, получен {response.status_code}. " \
+                f"Ответ: {response.text}"
             data = response.json()
-            assert data["name"] == project_name, "Имя проекта не совпадает"
+            assert data["name"] == project_name, \
+                f"Имя проекта не совпадает: ожидаемое '{project_name}', фактическое '{data['name']}'"
 
     @allure.story("Удаление проекта")
     @pytest.mark.api
     def test_delete_project(self, api_client):
-        # Сначала создаём временный проект
+        # Создаём временный проект
         create_resp = api_client.create_project("ToDelete")
         if create_resp.status_code != 201:
             allure.attach(
@@ -48,13 +49,13 @@ class TestAPIProjects:
                 "Ошибка создания",
                 allure.attachment_type.TEXT
             )
-            assert False, "Не удалось создать проект для удаления"
+            assert False, f"Не удалось создать проект для удаления. " \
+                          f"Статус: {create_resp.status_code}, Ответ: {create_resp.text}"
         project_id = create_resp.json()["id"]
 
         with allure.step(f"Удаление проекта {project_id}"):
             delete_resp = api_client.delete_project(project_id)
 
         with allure.step("Проверка успешного удаления (200 или 204)"):
-            assert delete_resp.status_code in [200, 204], (
-                f"Ожидался 200 или 204, получен {delete_resp.status_code}"
-            )
+            assert delete_resp.status_code in [200, 204], \
+                f"Ошибка удаления: статус {delete_resp.status_code}, Ответ: {delete_resp.text}"
